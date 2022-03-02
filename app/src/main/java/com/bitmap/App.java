@@ -9,9 +9,22 @@ public class App {
 
 
     public static void main(String[] args) {
+        // One of this transform is required : blackWhite , border or dark
         Bitmap bitmap = new Bitmap();
         bitmap.readImage(args[0]);
-        bitmap.darken();
+        String transform = args[2];
+        switch (transform){
+            case "blackWhite" :
+                bitmap.convertToBlackWhite();
+                break;
+            case "dark" :
+                bitmap.darken();
+                break;
+            case "border" :
+                bitmap.border();
+                break;
+        }
+
         bitmap.write(args[1]);
 
     }
